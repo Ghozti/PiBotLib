@@ -1,12 +1,9 @@
-import com.pi4j.Pi4J;
-import com.pi4j.context.Context;
-import com.pi4j.util.Console;
+import com.pi4j.io.gpio.*;
 
 public class Main {
     public static void main(String[] args) {
 
-        Context pi4j = Pi4J.newAutoContext();
-
-        
+        GpioController controller = GpioFactory.getInstance();
+        GpioPinDigitalOutput pin = controller.provisionDigitalOutputPin(RaspiPin.GPIO_01,"pin1", PinState.HIGH);
     }
 }
