@@ -4,6 +4,6 @@ import com.pi4j.wiringpi.SoftPwm;
 
 public class Main {
     public static void main(String[] args) {
-
+        //todo transfer to gradle
     }
 }
