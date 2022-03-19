@@ -1,4 +1,4 @@
-package pibot.lib;
+package pibot.lib.graphical.driverStation;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.graphics.Texture;
