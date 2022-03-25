@@ -9,6 +9,7 @@ import com.badlogic.gdx.utils.ScreenUtils;
 public class DriverStation implements Screen {
 	SpriteBatch batch;
 	Texture img;
+
 	public DriverStation(){
 		batch = new SpriteBatch();
 	}
@@ -22,7 +23,6 @@ public class DriverStation implements Screen {
 	public void render(float delta) {
 		ScreenUtils.clear(1, 0, 0, 1);
 		batch.begin();
-		batch.draw(img, 0, 0);
 		batch.end();
 	}
 
@@ -49,6 +49,5 @@ public class DriverStation implements Screen {
 	@Override
 	public void dispose () {
 		batch.dispose();
-		img.dispose();
 	}
 }
