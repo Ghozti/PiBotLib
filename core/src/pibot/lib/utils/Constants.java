@@ -6,8 +6,8 @@ public class Constants {
 
         public static class DriverStation {
 
-            public static final float buttonWidth = 100;
-            public static final float buttonHeight = 100;
+            public static final float buttonWidth = 150;
+            public static final float buttonHeight = 150;
 
         }
 
