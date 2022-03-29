@@ -5,15 +5,16 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
+import pibot.lib.graphical.tools.Font;
 import pibot.lib.utils.Constants;
 
-import java.awt.*;
-
 public class DriverStation implements Screen {
+
 	SpriteBatch batch;
 	Texture img;
 	DriverStationButton enableButton, disableButton;
 	com.badlogic.gdx.math.Rectangle mouseHitbox;
+	Font font;
 
 	public DriverStation(){
 		batch = new SpriteBatch();
@@ -25,6 +26,7 @@ public class DriverStation implements Screen {
 		enableButton = new DriverStationButton("Enable (1).png",80,50);
 		disableButton = new DriverStationButton("disable.png",280,50);
 		mouseHitbox = new com.badlogic.gdx.math.Rectangle(Gdx.input.getX(),-Gdx.input.getY(),15,15);
+		font = new Font(100);
 	}
 
 	private void update(){
@@ -42,6 +44,7 @@ public class DriverStation implements Screen {
 		batch.draw(img,0,0,1080,720);
 		batch.draw(enableButton.getTexture(),enableButton.getX(),enableButton.getY(),enableButton.getWidth(), enableButton.getHeight());
 		batch.draw(disableButton.getTexture(),disableButton.getX(),disableButton.getY(),disableButton.getWidth(), disableButton.getHeight());
+		font.draw(batch,"Robot State: ",480,200,0,false);
 		batch.end();
 	}
 
