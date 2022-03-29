@@ -5,6 +5,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
+import pibot.lib.utils.Constants;
 
 import java.awt.*;
 
@@ -28,7 +29,7 @@ public class DriverStation implements Screen {
 
 	private void update(){
 		mouseHitbox.x = Gdx.input.getX();
-		mouseHitbox.y = Math.abs(Gdx.input.getY() - (int)720);
+		mouseHitbox.y = Math.abs(Gdx.input.getY() - (int) Constants.Graphical.Screen.height);
 		System.out.println(mouseHitbox.x + " " + mouseHitbox.y);
 	}
 
