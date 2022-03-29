@@ -13,7 +13,7 @@ public class DriverStation implements Screen {
 	SpriteBatch batch;
 	Texture img;
 	DriverStationButton enableButton, disableButton;
-	Rectangle mouseHitbox;
+	com.badlogic.gdx.math.Rectangle mouseHitbox;
 
 	public DriverStation(){
 		batch = new SpriteBatch();
@@ -22,15 +22,16 @@ public class DriverStation implements Screen {
 	@Override
 	public void show() {
 		img = new Texture(Gdx.files.internal("PiBotLib Driver Station.png"));
-		enableButton = new DriverStationButton("Enable(1).png",80,50);
+		enableButton = new DriverStationButton("Enable (1).png",80,50);
 		disableButton = new DriverStationButton("disable.png",280,50);
-		mouseHitbox = new Rectangle(Gdx.input.getX(),-Gdx.input.getY(),15,15);
+		mouseHitbox = new com.badlogic.gdx.math.Rectangle(Gdx.input.getX(),-Gdx.input.getY(),15,15);
 	}
 
 	private void update(){
 		mouseHitbox.x = Gdx.input.getX();
 		mouseHitbox.y = Math.abs(Gdx.input.getY() - (int) Constants.Graphical.Screen.height);
-		System.out.println(mouseHitbox.x + " " + mouseHitbox.y);
+		updateEnableButton();
+		updateDisableButton();
 	}
 
 	@Override
@@ -67,5 +68,21 @@ public class DriverStation implements Screen {
 	@Override
 	public void dispose () {
 		batch.dispose();
+	}
+
+	private void updateEnableButton(){
+		if (enableButton.getHitbox().overlaps(mouseHitbox)){
+			enableButton.changePath("Enable.png");
+		}else {
+			enableButton.changePath("Enable (1).png");
+		}
+	}
+
+	private void updateDisableButton(){
+		if (disableButton.getHitbox().overlaps(mouseHitbox)){
+			disableButton.changePath("disable(1).png");
+		}else {
+			disableButton.changePath("disable.png");
+		}
 	}
 }
