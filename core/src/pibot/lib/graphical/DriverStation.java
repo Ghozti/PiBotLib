@@ -1,12 +1,14 @@
 package pibot.lib.graphical;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 import pibot.lib.graphical.tools.Font;
 import pibot.lib.utils.Constants;
+import pibot.lib.utils.DriverStationState;
 
 public class DriverStation implements Screen {
 
@@ -45,6 +47,7 @@ public class DriverStation implements Screen {
 		batch.draw(enableButton.getTexture(),enableButton.getX(),enableButton.getY(),enableButton.getWidth(), enableButton.getHeight());
 		batch.draw(disableButton.getTexture(),disableButton.getX(),disableButton.getY(),disableButton.getWidth(), disableButton.getHeight());
 		font.draw(batch,"Robot State: ",480,200,0,false);
+		font.draw(batch, DriverStationState.getState(),480,100,0,false);
 		batch.end();
 	}
 
@@ -76,14 +79,31 @@ public class DriverStation implements Screen {
 	private void updateEnableButton(){
 		if (enableButton.getHitbox().overlaps(mouseHitbox)){
 			enableButton.changePath("Enable.png");
+			if (Gdx.input.isButtonPressed(Input.Buttons.LEFT)){
+				if (!DriverStationState.getState().equals("Enabled")) {
+					DriverStationState.switchState();
+				}
+			}
 		}else {
 			enableButton.changePath("Enable (1).png");
 		}
 	}
 
 	private void updateDisableButton(){
+
+		if (Gdx.input.isKeyPressed(Input.Keys.SPACE) || Gdx.input.isKeyPressed(Input.Keys.ENTER)){
+			if (!DriverStationState.getState().equals("Disabled")) {
+				DriverStationState.switchState();
+			}
+		}
+
 		if (disableButton.getHitbox().overlaps(mouseHitbox)){
 			disableButton.changePath("disable(1).png");
+			if (Gdx.input.isButtonPressed(Input.Buttons.LEFT)){
+				if (!DriverStationState.getState().equals("Disabled")) {
+					DriverStationState.switchState();
+				}
+			}
 		}else {
 			disableButton.changePath("disable.png");
 		}
