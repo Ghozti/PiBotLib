@@ -68,3 +68,4 @@ project(":core") {
         api "com.badlogicgames.gdx:gdx-bullet:$gdxVersion"
     }
 }
+
