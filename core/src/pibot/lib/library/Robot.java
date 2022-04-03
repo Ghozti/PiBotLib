@@ -8,7 +8,7 @@ public class Robot {
 
         GpioController factory = GpioFactory.getInstance();
 
-        GpioPinDigitalOutput pin = factory.provisionDigitalOutputPin(RaspiPin.GPIO_01,"LED", PinState.LOW);
+        GpioPinDigitalOutput pin = factory.provisionDigitalOutputPin(RaspiPin.GPIO_04,"LED", PinState.LOW);
         pin.setShutdownOptions(true, PinState.LOW);
 
         try {
