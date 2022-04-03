@@ -15,7 +15,7 @@ public class Font {
 
     public Font(int size){
         //creates a bitmapFont from our file
-        FreeTypeFontGenerator fontGenerator = new FreeTypeFontGenerator(Gdx.files.internal("core/assets/trench-font/TrenchThin-aZ1j.ttf"));
+        FreeTypeFontGenerator fontGenerator = new FreeTypeFontGenerator(Gdx.files.internal("trench-font/TrenchThin-aZ1J.ttf"));
         FreeTypeFontGenerator.FreeTypeFontParameter fontParameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
 
         //sets font attributes
