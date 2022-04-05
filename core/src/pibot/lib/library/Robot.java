@@ -1,25 +1,40 @@
 package pibot.lib.library;
 
+import com.pi4j.Pi4J;
+import com.pi4j.context.Context;
 import com.pi4j.io.gpio.*;
+import com.pi4j.io.gpio.digital.DigitalOutput;
+import com.pi4j.io.gpio.digital.DigitalOutputConfigBuilder;
+import com.pi4j.io.gpio.digital.DigitalState;
+
+import java.util.Scanner;
 
 public class Robot {
 
     public static void runRobot(){
+        Context context = Pi4J.newAutoContext();
+        DigitalOutputConfigBuilder pinConfig = DigitalOutput.newConfigBuilder(context)
+                .id("led pin")
+                .name("pin 4")
+                .address(4)
+                .shutdown(DigitalState.LOW)
+                .initial(DigitalState.LOW)
+                .provider("pigpio-digital-output");
 
-        GpioController factory = GpioFactory.getInstance();
+        DigitalOutput pin = context.create(pinConfig);
 
-        GpioPinDigitalOutput pin = factory.provisionDigitalOutputPin(RaspiPin.GPIO_04,"LED", PinState.LOW);
-        pin.setShutdownOptions(true, PinState.LOW);
+        boolean exit = false;
+        Scanner scanner = new Scanner(System.in);
 
-        try {
-            // toggle pin state for 25 times
-            for (int i = 0; i < 25; i++) {
-                pin.toggle();
-                Thread.sleep(2500);
+        while(!exit){
+            if (scanner.nextLine().equals("on")){
+                pin.high();
+            }else if (scanner.nextLine().equals("off")){
+                pin.low();
+            }else {
+                exit = true;
             }
-            // done shut down the GPIO controller now
-            factory.shutdown();
-        } catch (InterruptedException e) {
         }
+        context.shutdown();
     }
 }
