@@ -16,8 +16,8 @@ public class Robot {
         Context context = Pi4J.newAutoContext();
         DigitalOutputConfigBuilder pinConfig = DigitalOutput.newConfigBuilder(context)
                 .id("led pin")
-                .name("pin 4")
-                .address(4)
+                .name("pin 7")
+                .address(7)
                 .shutdown(DigitalState.LOW)
                 .initial(DigitalState.LOW)
                 .provider("pigpio-digital-output");
