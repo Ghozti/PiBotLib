@@ -28,19 +28,13 @@ public class Robot {
     }
 
     public void runRobot(){
-
-        boolean exit = false;
-
-        if (!exit){
-            if (DriverStationState.getState().equals("Enabled")){
-                pin.high();
-                System.out.println("running");
-            }else if (DriverStationState.getState().equals("Disabled")){
-                pin.low();
-            }else {
-                exit = true;
-                context.shutdown();
-            }
+        if (DriverStationState.getState().equals("Enabled")){
+            pin.high();
+        }
+        if (DriverStationState.getState().equals("Disabled")){
+            pin.low();
+        }else {
+            context.shutdown();
         }
     }
 }
