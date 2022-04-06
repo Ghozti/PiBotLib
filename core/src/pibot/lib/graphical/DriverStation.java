@@ -3,6 +3,7 @@ package pibot.lib.graphical;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
@@ -18,6 +19,7 @@ public class DriverStation implements Screen {
 	DriverStationButton enableButton, disableButton;
 	com.badlogic.gdx.math.Rectangle mouseHitbox;
 	Font font;
+	Music enableSound, disableSound;
 
 	Robot robot;
 	boolean robotRunning;
@@ -34,7 +36,8 @@ public class DriverStation implements Screen {
 		disableButton = new DriverStationButton("disable.png",280,50);
 		mouseHitbox = new com.badlogic.gdx.math.Rectangle(Gdx.input.getX(),-Gdx.input.getY(),15,15);
 		font = new Font(100);
-
+		enableSound = Gdx.audio.newMusic(Gdx.files.internal("autonStart.mp3"));
+		disableSound = Gdx.audio.newMusic(Gdx.files.internal("buzzer.mp3"));
 		robot = new Robot();
 	}
 
@@ -45,8 +48,8 @@ public class DriverStation implements Screen {
 		updateDisableButton();
 
 		if (DriverStationState.getState().equals("Enabled") && !robotRunning){
-			Robot.runRobot();
-			robotRunning = true;
+			//Robot.runRobot();
+			//robotRunning = true;
 		}
 	}
 
@@ -94,6 +97,8 @@ public class DriverStation implements Screen {
 			if (Gdx.input.isButtonPressed(Input.Buttons.LEFT)){
 				if (!DriverStationState.getState().equals("Enabled")) {
 					DriverStationState.switchState();
+					enableSound.play();
+					disableSound.stop();
 				}
 			}
 		}else {
@@ -114,6 +119,8 @@ public class DriverStation implements Screen {
 			if (Gdx.input.isButtonPressed(Input.Buttons.LEFT)){
 				if (!DriverStationState.getState().equals("Disabled")) {
 					DriverStationState.switchState();
+					disableSound.play();
+					enableSound.stop();
 				}
 			}
 		}else {
