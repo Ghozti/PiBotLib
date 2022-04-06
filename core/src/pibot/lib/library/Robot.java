@@ -11,16 +11,23 @@ import java.util.Scanner;
 
 public class Robot {
 
-    public static void runRobot(){
-        Context context = Pi4J.newAutoContext();
-        DigitalOutputConfigBuilder pinConfig = DigitalOutput.newConfigBuilder(context)
+    Context context;
+    DigitalOutputConfigBuilder pinConfig;
+    DigitalOutput pin;
+
+    public Robot(){
+        context = Pi4J.newAutoContext();
+        pinConfig = DigitalOutput.newConfigBuilder(context)
                 .id("led pin")
-                .name("pin 7")
-                .address(7)
+                .name("pin 4")
+                .address(4)
                 .shutdown(DigitalState.LOW)
                 .initial(DigitalState.LOW)
                 .provider("pigpio-digital-output");
-        DigitalOutput pin = context.create(pinConfig);
+        pin = context.create(pinConfig);
+    }
+
+    public void runRobot(){
 
         boolean exit = false;
 
@@ -32,8 +39,8 @@ public class Robot {
                 pin.low();
             }else {
                 exit = true;
+                context.shutdown();
             }
         }
-        context.shutdown();
     }
 }
