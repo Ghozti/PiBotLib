@@ -5,6 +5,7 @@ import com.pi4j.context.Context;
 import com.pi4j.io.gpio.digital.DigitalOutput;
 import com.pi4j.io.gpio.digital.DigitalOutputConfigBuilder;
 import com.pi4j.io.gpio.digital.DigitalState;
+import pibot.lib.utils.DriverStationState;
 
 import java.util.Scanner;
 
@@ -25,12 +26,12 @@ public class Robot {
         DigitalOutput pin = context.create(pinConfig);
 
         boolean exit = false;
-        Scanner scanner = new Scanner(System.in);
 
         while(!exit){
-            if (scanner.nextLine().equals("on")){
+            System.out.println("running");
+            if (DriverStationState.getState().equals("Enabled")){
                 pin.high();
-            }else if (scanner.nextLine().equals("off")){
+            }else if (DriverStationState.getState().equals("Disabled")){
                 pin.low();
             }else {
                 exit = true;
