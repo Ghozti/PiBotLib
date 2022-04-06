@@ -12,31 +12,29 @@ import java.util.Scanner;
 public class Robot {
 
     public static void runRobot(){
-        Thread thread = new Thread();
-        thread.start();
-        Context context = Pi4J.newAutoContext();
-        DigitalOutputConfigBuilder pinConfig = DigitalOutput.newConfigBuilder(context)
-                .id("led pin")
-                .name("pin 7")
-                .address(7)
-                .shutdown(DigitalState.LOW)
-                .initial(DigitalState.LOW)
-                .provider("pigpio-digital-output");
-
-        DigitalOutput pin = context.create(pinConfig);
+        //Context context = Pi4J.newAutoContext();
+        //DigitalOutputConfigBuilder pinConfig = DigitalOutput.newConfigBuilder(context)
+        //        .id("led pin")
+        //        .name("pin 7")
+        //        .address(7)
+        //        .shutdown(DigitalState.LOW)
+        //        .initial(DigitalState.LOW)
+        //        .provider("pigpio-digital-output");
+//
+        //DigitalOutput pin = context.create(pinConfig);
 
         boolean exit = false;
 
-        while(!exit){
-            System.out.println("running");
+        if (!exit){
             if (DriverStationState.getState().equals("Enabled")){
-                pin.high();
+                //pin.high();
+                System.out.println("running");
             }else if (DriverStationState.getState().equals("Disabled")){
-                pin.low();
+                //pin.low();
             }else {
                 exit = true;
             }
         }
-        context.shutdown();
+        //context.shutdown();
     }
 }

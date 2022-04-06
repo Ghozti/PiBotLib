@@ -47,7 +47,7 @@ public class DriverStation implements Screen {
 		updateEnableButton();
 		updateDisableButton();
 
-		if (DriverStationState.getState().equals("Enabled") && !robotRunning){
+		if (DriverStationState.getState().equals("Enabled")){
 			Robot.runRobot();
 			robotRunning = true;
 		}
