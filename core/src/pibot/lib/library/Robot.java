@@ -11,6 +11,8 @@ import java.util.Scanner;
 public class Robot {
 
     public static void runRobot(){
+        Thread thread = new Thread();
+        thread.start();
         Context context = Pi4J.newAutoContext();
         DigitalOutputConfigBuilder pinConfig = DigitalOutput.newConfigBuilder(context)
                 .id("led pin")
