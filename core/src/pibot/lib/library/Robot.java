@@ -4,6 +4,7 @@ import com.pi4j.Pi4J;
 import com.pi4j.context.Context;
 import com.pi4j.io.gpio.digital.DigitalOutput;
 import com.pi4j.io.gpio.digital.DigitalOutputConfigBuilder;
+import com.pi4j.io.gpio.digital.DigitalOutputProvider;
 import com.pi4j.io.gpio.digital.DigitalState;
 import pibot.lib.utils.DriverStationState;
 
@@ -17,6 +18,8 @@ public class Robot {
 
     public Robot(){
         context = Pi4J.newAutoContext();
+        //DigitalOutput a = context.dout().create(4);
+        //a.config().shutdownState(DigitalState.LOW);
         pinConfig = DigitalOutput.newConfigBuilder(context)
                 .id("led pin")
                 .name("pin 4")
