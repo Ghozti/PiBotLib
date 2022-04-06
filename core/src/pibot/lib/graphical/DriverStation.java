@@ -36,7 +36,7 @@ public class DriverStation implements Screen {
 		disableButton = new DriverStationButton("disable.png",280,50);
 		mouseHitbox = new com.badlogic.gdx.math.Rectangle(Gdx.input.getX(),-Gdx.input.getY(),15,15);
 		font = new Font(100);
-		enableSound = Gdx.audio.newMusic(Gdx.files.internal("autonStart.mp3"));
+		enableSound = Gdx.audio.newMusic(Gdx.files.internal("autonstart.mp3"));
 		disableSound = Gdx.audio.newMusic(Gdx.files.internal("buzzer.mp3"));
 		robot = new Robot();
 	}
