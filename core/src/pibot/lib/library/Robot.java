@@ -15,28 +15,28 @@ public class Robot {
     Context context;
     DigitalOutputConfigBuilder pinConfig;
     DigitalOutput pin;
+    DigitalOutput a;
 
     public Robot(){
         context = Pi4J.newAutoContext();
-        //DigitalOutput a = context.dout().create(4);
-        //a.config().shutdownState(DigitalState.LOW);
-        pinConfig = DigitalOutput.newConfigBuilder(context)
-                .id("led pin")
-                .name("pin 4")
-                .address(4)
-                .shutdown(DigitalState.LOW)
-                .initial(DigitalState.LOW)
-                .provider("pigpio-digital-output");
-        pin = context.create(pinConfig);
-        pin.initialize(context);
+        a = context.dout().create(4);
+        a.config().shutdownState(DigitalState.LOW);
+        //pinConfig = DigitalOutput.newConfigBuilder(context)
+        //        .id("led pin")
+        //        .name("pin 4")
+        //        .address(4)
+        //        .shutdown(DigitalState.LOW)
+        //        .initial(DigitalState.LOW)
+        //        .provider("pigpio-digital-output");
+        //pin = context.create(pinConfig);
     }
 
     public void runRobot(){
         if (DriverStationState.getState().equals("Enabled")){
-            pin.high();
+            a.high();
         }
         if (DriverStationState.getState().equals("Disabled")){
-            pin.low();
+            a.low();
         }else {
             context.shutdown();
         }
