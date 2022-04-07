@@ -28,6 +28,7 @@ public class Robot {
                 .initial(DigitalState.LOW)
                 .provider("pigpio-digital-output");
         pin = context.create(pinConfig);
+        pin.initialize(context);
     }
 
     public void runRobot(){
