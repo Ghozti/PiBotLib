@@ -6,6 +6,7 @@ import com.pi4j.io.gpio.digital.DigitalOutput;
 import com.pi4j.io.gpio.digital.DigitalOutputConfigBuilder;
 import com.pi4j.io.gpio.digital.DigitalOutputProvider;
 import com.pi4j.io.gpio.digital.DigitalState;
+import com.pi4j.library.pigpio.PiGpio;
 import pibot.lib.utils.DriverStationState;
 
 import java.util.Scanner;
