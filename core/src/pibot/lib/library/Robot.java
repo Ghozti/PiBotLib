@@ -19,6 +19,8 @@ public class Robot {
 
     public Robot(){
         context = Pi4J.newAutoContext();
+        a = context.dout().create(4);
+        a.config().shutdownState(DigitalState.LOW);
         //pinConfig = DigitalOutput.newConfigBuilder(context)
         //        .id("led pin")
         //        .name("pin 4")
@@ -30,8 +32,7 @@ public class Robot {
     }
 
     public void runRobot(){
-        a = context.dout().create(4);
-        a.config().shutdownState(DigitalState.LOW);
+        a.initialize(context);
         if (DriverStationState.getState().equals("Enabled")){
             a.high();
         }
