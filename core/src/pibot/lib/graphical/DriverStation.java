@@ -46,7 +46,6 @@ public class DriverStation implements Screen {
 		mouseHitbox.y = Math.abs(Gdx.input.getY() - (int) Constants.Graphical.Screen.height);
 		updateEnableButton();
 		updateDisableButton();
-		robot.runRobot();
 	}
 
 	@Override
@@ -94,6 +93,7 @@ public class DriverStation implements Screen {
 				if (!DriverStationState.getState().equals("Enabled")) {
 					DriverStationState.switchState();
 					enableSound.play();
+					robot.runRobot();
 					disableSound.stop();
 				}
 			}
