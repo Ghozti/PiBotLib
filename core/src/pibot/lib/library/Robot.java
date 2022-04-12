@@ -5,7 +5,10 @@ import com.pi4j.context.Context;
 import com.pi4j.io.gpio.digital.DigitalOutput;
 import com.pi4j.io.gpio.digital.DigitalOutputConfigBuilder;
 import com.pi4j.io.gpio.digital.DigitalState;
+import com.pi4j.library.pigpio.PiGpio;
 import pibot.lib.utils.DriverStationState;
+
+import java.util.function.Function;
 
 public class Robot {
 
@@ -26,6 +29,12 @@ public class Robot {
 
     public void runRobot(){
         if (DriverStationState.getState().equals("Enabled")){
+            pinConfig = DigitalOutput.newConfigBuilder(context)
+                    .id("led pin")
+                    .name("pin 4")
+                    .address(4)
+                    .initial(DigitalState.LOW)
+                    .provider("pigpio-digital-output");
             pin.high();
         }
         if (DriverStationState.getState().equals("Disabled")){
