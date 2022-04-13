@@ -30,9 +30,11 @@ public class Robot {
 
     public void runRobot(){
         if (DriverStationState.getState().equals("Enabled")){
+            pin.initialize(context);
             pin.high();
         }
         if (DriverStationState.getState().equals("Disabled")){
+            pin.initialize(context);
             pin.low();
         }else {
             context.shutdown();
