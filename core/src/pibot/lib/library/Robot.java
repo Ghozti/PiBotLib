@@ -16,9 +16,9 @@ import java.util.function.Function;
 public class Robot {
 
     Context context;
+    Pwm pwm;
     //DigitalOutputConfigBuilder pinConfig;
     //DigitalOutput pin;
-    Pwm pwm;
 
     public Robot(){
         context = Pi4J.newAutoContext();
@@ -31,6 +31,7 @@ public class Robot {
         //        .provider("pigpio-digital-output");
         //pin = context.create(pinConfig);
         pwm = context.create(buildPwmConfig(context,12));
+        System.out.println("pwm init");
     }
 
     public void runRobot(){
