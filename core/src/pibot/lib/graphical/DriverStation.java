@@ -38,7 +38,7 @@ public class DriverStation implements Screen {
 		font = new Font(100);
 		enableSound = Gdx.audio.newMusic(Gdx.files.internal("autonstart.mp3"));
 		disableSound = Gdx.audio.newMusic(Gdx.files.internal("buzzer.mp3"));
-		//robot = new Robot();
+		robot = new Robot();
 	}
 
 	private void update(){
@@ -46,7 +46,7 @@ public class DriverStation implements Screen {
 		mouseHitbox.y = Math.abs(Gdx.input.getY() - (int) Constants.Graphical.Screen.height);
 		updateEnableButton();
 		updateDisableButton();
-		//robot.runRobot();
+		robot.runRobot();
 	}
 
 	@Override
